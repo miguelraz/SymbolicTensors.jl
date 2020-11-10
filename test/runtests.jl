@@ -112,6 +112,7 @@ using LinearAlgebra
         F = TensorHead("F",[field])
         δ = field.delta
 
+
         simp(x) = contract_metric(canon_bp(x),field.metric)
 
         α = symbols("α",positive=true)
@@ -138,6 +139,8 @@ using LinearAlgebra
         R = Ric(-i,-j)*field.metric(j,i)
         R = simp(R)
 
+        riemann = get_riemann(F, h, TIT, field)
+        ricci = get_ricci(x, h, TIT, field)
         ## turn into arrays
         vars = symbols("x y z",real=true)
         x,y,z = vars
